@@ -2,12 +2,12 @@ from src.base import Base
 
 class GameFunctions:
     def __init__(self):
-        Base.board = [Base.empty] * 9
+        Base.board = [[Base.empty for _ in range (Base.columns)] for _ in  range(Base.rows)]
 
 
     def print_board(self):
         print(Base.board[0], "|", Base.board[1], "|", Base.board[2])
-        print("---------")
+        print("-------")
         print(Base.board[3], "|", Base.board[4], "|", Base.board[5])
         print("---------")
         print(Base.board[6], "|", Base.board[7], "|", Base.board[8])
