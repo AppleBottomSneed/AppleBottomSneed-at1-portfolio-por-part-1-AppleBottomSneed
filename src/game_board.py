@@ -6,22 +6,24 @@ class GameFunctions:
 
 
     def print_board(self):
-        print(Base.board[0], "|", Base.board[1], "|", Base.board[2])
-        print("-------")
-        print(Base.board[3], "|", Base.board[4], "|", Base.board[5])
-        print("---------")
-        print(Base.board[6], "|", Base.board[7], "|", Base.board[8])
-        print()
+        for i in range(Base.rows):
+            row = " | ".join(Base.board[i])
+            print(row)
+            if i < Base.rows - 1:
+                print("-" * (Base.rows * 3))
 
     def check_winner(self):
-        win_conditions = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
+        flattened_list = [box for row in Base.board for box in row] #flattens Base.board
+        win_conditions = [(0, 1, 2), (3, 4, 5), (6, 7, 8),
+                          (0, 3, 6), (1, 4, 7), (2, 5, 8),
+                          (0, 4, 8), (2, 4, 6)]
         for wc in win_conditions:
-            if Base.board[wc[0]] == Base.board[wc[1]] == Base.board[wc[2]] != Base.empty:
-                print("Player", Base.board[wc[0]], "wins!")
+            if flattened_list[wc[0]] == flattened_list[wc[1]] == flattened_list[wc[2]] != Base.empty:
+                print("Player", flattened_list[wc[0]], "wins!")
                 exit(0)
 
         # Check for tie
-        if Base.empty not in Base.board:
+        if Base.empty not in flattened_list:
             print("It's a tie!")
             exit(0)
 
