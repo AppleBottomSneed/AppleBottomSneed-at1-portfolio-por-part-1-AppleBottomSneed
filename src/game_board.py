@@ -34,7 +34,10 @@ class GameFunctions:
             player = Base.p1 if flattened_list.count(Base.empty) % 2 == 1 else Base.p2
             move = input("Next move for player " + player + " (0-8): ")
             if move.isdigit() and 0 <= int(move) <= 8 and flattened_list[int(move)] == Base.empty:
-                flattened_list[int(move)] = player
+                index = int(move)
+                row = index // Base.rows # Indexed number/columns
+                column = index % Base.columns # Indexed number remainder columns
+                Base.board[row][column] = player
                 break
             else:
                 print("Invalid move, try again.")
