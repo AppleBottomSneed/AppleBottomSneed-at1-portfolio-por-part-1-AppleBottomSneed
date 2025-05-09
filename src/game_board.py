@@ -38,8 +38,9 @@ class GameFunctions:
                 row = index // Base.rows # Indexed number/columns
                 column = index % Base.columns # Indexed number remainder columns
                 Base.board[row][column] = player
-                break
+                return move
             else:
                 print("Invalid move, try again.")
+
 
 
