@@ -47,6 +47,11 @@ class TestTicTacToe(unittest.TestCase):
         print("Print invalid move of 9 and !")
         self.assertEqual(result,'5') # Exits loop after valid move
 
+    def test_2d_list(self):
+        self.assertEqual(len(Base.board), Base.columns)
+        for row in range(Base.rows):
+            self.assertEqual(len(Base.board), Base.rows)
+        print(Base.board)
 
 
 
